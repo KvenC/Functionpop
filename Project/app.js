@@ -49,7 +49,7 @@ app.use('/admin', admin);
 //預設路由，前台index
 // app.use('/', home);
 
-app.listen(3000, function () {
+app.listen(3005, function () {
   console.log('run');
 });
 

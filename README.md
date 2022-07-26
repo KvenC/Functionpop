@@ -14,27 +14,28 @@
 
 1. 會員登入畫面
 
-   登入後會運用session記住會員登入的狀態。
-
+   登入後會運用session記住會員登入的狀態，並且會判斷使用者是否此使用者或帳密是否正確。
+   <img src="https://github.com/KvenC/Functionpop/blob/main/GIF/網站登入.gif" width="100%" height="75%" alt="網站登入"/>
+   
 2. 會員個人資料更改
 
    運用session功能帶出會員的相關資料(性別、生日、性別...)
    可直接更改聯絡電話和地址，按下儲存會再次詢問是否更改。
+   <img src="https://github.com/KvenC/Functionpop/blob/main/GIF/更改個人資料.gif" width="100%" height="75%" alt="個人資料更改"/>
 
 3. 會員密碼更改
 
    會判對是否有輸入新、舊密碼，如未輸入會跳出相關錯誤訊息(ex:舊密碼不可為空)    
    都輸入正確會跟資料庫進行比對舊密碼，舊密碼正確會將新密碼以bcrypt技術進行雜湊加密進資料庫儲存。
+   <img src="https://github.com/KvenC/Functionpop/blob/main/GIF/變更密碼判斷.gif" width="100%" height="75%" alt="會員密碼更改"/>
 
-4. 訂單&退貨
+4. 訂單清單和訂單細節
 
-   會到資料庫根據使用者名稱撈訂購資料，並把各項購買數量和金額做加總。
-
-5. 檢視訂單資訊
-
-   會呈現該筆訂單的詳細資訊，買的品項、數量、金額......。
+   會到資料庫根據使用者名稱取得訂購資料，並把各項購買數量和金額做加總。
+   訂單細節會呈現該筆訂單的詳細資訊，買的品項、數量、金額......。
+   <img src="https://github.com/KvenC/Functionpop/blob/main/GIF/訂單詳情.gif" width="100%" height="75%" alt="訂單詳情"/>
  
-6. 我的最愛
+5. 我的最愛
 
    * 在商品頁（ [localhost:3005/home/product/Male](http://localhost:3005/home/product/Male) )直接按愛心會呈現紅色愛心表示已加入我的最愛收藏，使用AJAX將資訊傳到後端。
    <img src="https://github.com/KvenC/Functionpop/blob/main/GIF/加入我的最愛.gif" alt="我的最愛-收藏"/>

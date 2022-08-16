@@ -45,8 +45,9 @@ router.get('/register_success', memberController.registerCheck);
 router.get('/memberData', getUrl, memberController.memberData);
 router.post('/memberData', getUrl, memberController.updateMemberData);
 
+// 更改密碼-----------------------------------------------------
 router.get('/memberData_changePw', getUrl, memberController.changePw);
-router.post('/memberData_changePw', getUrl,memberController.handlechangePw,redirectBack);
+router.post('/memberData_changePw', getUrl,memberController.handlechangePw);
 
 // 訂單詳情-----------------------------------------------------
 router.get('/orderList', getUrl, memberController.orderList);
@@ -135,7 +136,7 @@ router.post('/myFavourite', function (req, res) {
       }
     );
   }
-  //  ---送進購物車------------------------------------------------------
+  
 
 });
 

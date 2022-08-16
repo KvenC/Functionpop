@@ -3,6 +3,7 @@ var db = require('../dataBase');
 var bcrypt = require('bcrypt');
 var saltRounds = 10; // 增加密碼複雜程度
 var events = require(`events`);
+const { json } = require('body-parser');
 var emitter = new events.EventEmitter();
 
 
@@ -27,8 +28,9 @@ var memberController = {
             console.log('in');
         })
     },
+    // ----------------------變更密碼----------------------
     changePw: (req, res) => {
-        res.render('member/memberData_changePw', {
+        res.render('member/memberData_changePw2', {
             title: '會員資料｜變更密碼',
         });
     },
@@ -45,23 +47,24 @@ var memberController = {
         console.log("s_cAccount");
         console.log(s_cAccount);
 
-        if (!oldpw) {
-            req.flash('errorMessage', '舊密碼不可為空')
-            return next();
-        } else if (!newpw || !newpwAgain) {
-            req.flash('errorMessage', '新密碼不可為空')
-            return next();
-        } else if (oldpw) {
-
+        // if (!oldpw) {
+        //     req.flash('errorMessage', '舊密碼不可為空')
+        //     return next();
+        // } else if (!newpw || !newpwAgain) {
+        //     req.flash('errorMessage', '新密碼不可為空')
+        //     return next();
+        // } else
+         if (oldpw) {
             memberModel.memberPwCheck(s_cAccount, (err, result) => {
                 bcrypt.compare(oldpw, result.cPassword, (err, isSuccess) => {
                     console.log('--------in bcrypt check pw-----------');
                     if (err || !isSuccess) {
-                        req.flash('errorMessage', '密碼錯誤');
+                        // req.flash('errorMessage', '密碼錯誤');
+                        res.send('incorrent')
                         return next();
                     } else {
                         bcrypt.hash(newpw, saltRounds, (err, hash) => {
-                            console.log('--------in bcrypt hash-----------')
+                            console.log('--------password via bcrypt hash-----------')
                             if (err) {
                                 req.flash('errorMessage', err.toString());
                             }
@@ -71,9 +74,9 @@ var memberController = {
                                         console.log(err);    //    輸出資料庫錯誤資訊
                                         console.log('PW change error')
                                     } else {
-                                        req.flash('errorMessage', `更改成功`);
+                                        // req.flash('errorMessage', `更改成功`);
                                         console.log('PW update SUCCESS');
-                                        return next();
+                                        res.send('corrent')
                                     }
                                 });
                         });

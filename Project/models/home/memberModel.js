@@ -61,7 +61,7 @@ var memberModel = {
     },
     // ---------------取得訂單詳情---------------
     getDetail: (order_number, cb) => {
-        db.exec('SELECT O.order_list,O.product_id,O.UnitPrice,O.Quantity,O.order_date,P.product_image,P.product_name,P.size_name,P.product_gender,P.product_id from order_items AS O left join products_all AS P on P.product_all_id = O.product_id where order_list = ?',
+        db.exec('SELECT O.order_list,O.product_id,O.UnitPrice,O.Quantity,O.order_date,P.product_image,P.product_price,P.product_name,P.size_name,P.product_gender,P.product_id from order_items AS O left join products_all AS P on P.product_all_id = O.product_id where order_list = ?',
             [order_number],
             (result, fields, err) => {
                 cb(null, result);
